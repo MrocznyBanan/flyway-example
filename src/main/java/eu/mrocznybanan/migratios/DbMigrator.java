@@ -11,8 +11,8 @@ import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
 import javax.sql.DataSource;
 
-import com.googlecode.flyway.core.Flyway;
-import com.googlecode.flyway.core.api.MigrationInfo;
+import org.flywaydb.core.Flyway;
+import org.flywaydb.core.api.MigrationInfo;
 
 @Singleton
 @Startup
@@ -32,7 +32,6 @@ public class DbMigrator {
         }
 
         Flyway flyway = new Flyway();
-        flyway.setInitOnMigrate(true);
         flyway.setDataSource(dataSource);
         for (MigrationInfo migration : flyway.info().all()) {
             log.info("migrate task: " + migration.getVersion() + " : " + migration.getDescription() + " from file: " + migration.getScript());
