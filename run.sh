@@ -1,0 +1,1 @@
+docker run -d -p 8282:8080 --name flyway-example mrocznybanan/flyway-example
